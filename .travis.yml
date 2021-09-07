@@ -3,7 +3,7 @@ language: go
 go:
 - 1.13.5
 env:
-  - GO111MODULE=on SREGISTRY_GOOGLE_DRIVE_CREDENTIALS=/usr/share/credentials.json
+- GO111MODULE=on SREGISTRY_GOOGLE_DRIVE_CREDENTIALS=/usr/share/credentials.json
 python:
 - '3.9'
 addons:
@@ -31,9 +31,9 @@ matrix:
   - python: '2.6'
   - python: '3.5'
 before_install:
-- sudo openssl aes-256-cbc -K $encrypted_cbafb80fce45_key -iv $encrypted_cbafb80fce45_iv
-  -in client_secret_825018774845-ldb1aj6f54s02iu06dncu5r37hgsefme.apps.googleusercontent.com.json.enc
-  -out /usr/share/credentials.json
+- openssl aes-256-cbc -K $encrypted_351e9aa214ac_key -iv $encrypted_351e9aa214ac_iv
+  -in client_secret_825018774845-0ueebbdcais1jlejbbsv4tt7jngqfk9j.apps.googleusercontent.com.json.enc
+  /usr/share/credentials.json
   -d
 - sudo chmod u+x .travis/*.sh
 - "/bin/bash .travis/setup.sh"
