@@ -31,7 +31,7 @@ matrix:
   - python: '2.6'
   - python: '3.5'
 before_install:
-- openssl aes-256-cbc -K $encrypted_cbafb80fce45_key -iv $encrypted_cbafb80fce45_iv
+- sudo openssl aes-256-cbc -K $encrypted_cbafb80fce45_key -iv $encrypted_cbafb80fce45_iv
   -in client_secret_825018774845-ldb1aj6f54s02iu06dncu5r37hgsefme.apps.googleusercontent.com.json.enc
   -out /usr/share/credentials.json
   -d
