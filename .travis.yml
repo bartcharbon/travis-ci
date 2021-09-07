@@ -4,6 +4,8 @@ go:
 - 1.13.5
 env:
 - GO111MODULE=on
+  global:
+    - SREGISTRY_GOOGLE_DRIVE_CREDENTIALS=/usr/share/credentials.json
 python:
 - '3.9'
 addons:
@@ -35,8 +37,6 @@ before_install:
   -in client_secret_825018774845-ldb1aj6f54s02iu06dncu5r37hgsefme.apps.googleusercontent.com.json.enc
   -out /usr/share/credentials.json
   -d
-- SREGISTRY_GOOGLE_DRIVE_CREDENTIALS=/usr/share/credentials.json
-- sudo export SREGISTRY_GOOGLE_DRIVE_CREDENTIALS
 - sudo chmod u+x .travis/*.sh
 - "/bin/bash .travis/setup.sh"
 install:
