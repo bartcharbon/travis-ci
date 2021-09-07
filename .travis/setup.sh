@@ -8,8 +8,8 @@ echo "Python Version:"
 python --version
 pip install --user sregistry[all]
 sregistry version
-
 echo "sregistry Version:"
+sregistry backend activate dropbox
 
 # Install Singularity
 
