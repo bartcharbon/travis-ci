@@ -1,64 +1,45 @@
 os: linux
-
 language: go
-
 go:
-  - "1.13.5"
-
+- 1.13.5
 env:
-  - GO111MODULE=on
-
+- GO111MODULE=on
 python:
-  - "3.9"
-
+- '3.9'
 addons:
   apt:
     packages:
-      - build-essential
-      - squashfs-tools
-      - uuid-dev
-      - libuuid1
-      - libffi-dev
-      - libssl-dev
-      - libssl1.0.0
-      - libarchive-dev
-      - libgpgme11-dev
-      - libseccomp-dev
-      - wget
-      - pkg-config
+    - build-essential
+    - squashfs-tools
+    - uuid-dev
+    - libuuid1
+    - libffi-dev
+    - libssl-dev
+    - libssl1.0.0
+    - libarchive-dev
+    - libgpgme11-dev
+    - libseccomp-dev
+    - wget
+    - pkg-config
   homebrew:
     packages:
-      - squashfs
+    - squashfs
     update: true
-
-
 sudo: required
-
-
 matrix:
   include:
-    - python: "2.6"
-    - python: "3.5"
-
+  - python: '2.6'
+  - python: '3.5'
 before_install:
-  - sudo chmod u+x .travis/*.sh
-  - /bin/bash .travis/setup.sh
-
+- openssl aes-256-cbc -K $encrypted_cbafb80fce45_key -iv $encrypted_cbafb80fce45_iv
+  -in client_secret_825018774845-ldb1aj6f54s02iu06dncu5r37hgsefme.apps.googleusercontent.com.json.enc
+  -out /credentials.json
+  -d
+- SREGISTRY_GOOGLE_DRIVE_CREDENTIALS=/credentials.json
+- sudo chmod u+x .travis/*.sh
+- "/bin/bash .travis/setup.sh"
 install:
-  - # override
-
+- 
 script:
-                               # recipe
-  - /bin/bash .travis/build.sh Singularity
-
-                               # recipe with tag
-  #- /bin/bash .travis/build.sh --tag sneeze Singularity.tag
-
-  # Examples with upload to storage clients defined by sregistry
-  # https://singularityhub.github.io/sregistry-cli/clients
-  # Environment variables must be defined in CI encrypted secrets/settings
-
-  #- /bin/bash .travis/build.sh --uri collection/container --tag tacos --cli google-storage Singularity
-  - /bin/bash .travis/build.sh -u collection/container --cli google-drive Singularity
-  #- /bin/bash .travis/build.sh --uri collection/container --cli globus Singularity
-  #- /bin/bash .travis/build.sh --uri collection/container --cli registry Singularity
+- "/bin/bash .travis/build.sh Singularity"
+- "/bin/bash .travis/build.sh -u collection/container --cli google-drive Singularity"
