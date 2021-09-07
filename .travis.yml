@@ -3,8 +3,9 @@ language: go
 go:
 - 1.13.5
 env:
-- GO111MODULE=on
-- SREGISTRY_GOOGLE_DRIVE_CREDENTIALS=/usr/share/credentials.json
+  global:
+    - GO111MODULE=on
+    - SREGISTRY_GOOGLE_DRIVE_CREDENTIALS=/usr/share/credentials.json
 python:
 - '3.9'
 addons:
